@@ -31,7 +31,7 @@ public class SqlQueries {
 
     //Select total salary pf all employees. Name it "total".
     //language=HSQLDB
-    String select07 = "";
+    String select07 = "SELECT SUM(SALARY) AS total from EMPLOYEE";
 
     //Select all departments and amount of employees assigned per department
     //Name column containing name of the department "depname".
