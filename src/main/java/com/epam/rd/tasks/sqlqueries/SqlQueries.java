@@ -22,7 +22,7 @@ public class SqlQueries {
 
     //Select all employees assigned to departments and corresponding department
     //language=HSQLDB
-    String select05 = "SELECT * FROM EMPLOYEE WHERE DEPARTMENT is not null and DEPARTMENT";
+    String select05 = "SELECT * FROM EMPLOYEE WHERE DEPARTMENT is not null and  is not null ";
 
     //Select all employees and corresponding department name if there is one.
     //Name column containing name of the department "depname".
