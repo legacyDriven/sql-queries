@@ -6,23 +6,23 @@ package com.epam.rd.tasks.sqlqueries;
 public class SqlQueries {
     //Select all employees sorted by last name in ascending order
     //language=HSQLDB
-    String select01 = "";
+    String select01 = "SELECT * FROM EMPLOYEE ORDER BY LASTNAME";
 
     //Select employees having no more than 5 characters in last name sorted by last name in ascending order
     //language=HSQLDB
-    String select02 = "";
+    String select02 = "SELECT * FROM EMPLOYEE WHERE LENGTH(LASTNAME)<6 ORDER BY LASTNAME";
 
     //Select employees having salary no less than 2000 and no more than 3000
     //language=HSQLDB
-    String select03 = "";
+    String select03 = "SELECT * FROM EMPLOYEE WHERE SALARY BETWEEN 2000 AND 3000";
 
     //Select employees having salary no more than 2000 or no less than 3000
     //language=HSQLDB
-    String select04 = "";
+    String select04 = "SELECT * FROM EMPLOYEE WHERE SALARY<2001 OR SALARY>2999";
 
     //Select all employees assigned to departments and corresponding department
     //language=HSQLDB
-    String select05 = "";
+    String select05 = "SELECT * FROM EMPLOYEE WHERE DEPARTMENT is not null and DEPARTMENT";
 
     //Select all employees and corresponding department name if there is one.
     //Name column containing name of the department "depname".
