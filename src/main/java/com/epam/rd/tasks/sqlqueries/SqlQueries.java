@@ -18,16 +18,19 @@ public class SqlQueries {
 
     //Select employees having salary no more than 2000 or no less than 3000
     //language=HSQLDB
-    String select04 = "SELECT * FROM EMPLOYEE WHERE SALARY<2001 OR SALARY>2999";
+    String select04 = "SELECT * FROM EMPLOYEE WHERE SALARY NOT BETWEEN 2001 and 2999";
 
     //Select all employees assigned to departments and corresponding department
     //language=HSQLDB
-    String select05 = "SELECT * FROM EMPLOYEE WHERE DEPARTMENT is not null and  is not null ";
+    String select05 =
+            "select EMPLOYEE.ID, FIRSTNAME, LASTNAME, MIDDLENAME, POSITION, MANAGER, HIREDATE, SALARY, DEPARTMENT, NAME from EMPLOYEE left join DEPARTMENT D on EMPLOYEE.DEPARTMENT = D.ID where DEPARTMENT is not null";
 
     //Select all employees and corresponding department name if there is one.
     //Name column containing name of the department "depname".
     //language=HSQLDB
-    String select06 = "";
+    String select06 =
+            "select EMPLOYEE.ID, FIRSTNAME, LASTNAME, MIDDLENAME, POSITION, MANAGER, HIREDATE, SALARY, DEPARTMENT, NAME from EMPLOYEE join DEPARTMENT depname on EMPLOYEE.DEPARTMENT = depname.ID where DEPARTMENT is not null";
+
 
     //Select total salary pf all employees. Name it "total".
     //language=HSQLDB
@@ -37,7 +40,7 @@ public class SqlQueries {
     //Name column containing name of the department "depname".
     //Name column containing employee amount "staff_size".
     //language=HSQLDB
-    String select08 = "";
+    String select08 = "--SELECT COUNT";
 
     //Select all departments and values of total and average salary per department
     //Name column containing name of the department "depname".
