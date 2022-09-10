@@ -23,13 +23,14 @@ public class SqlQueries {
     //Select all employees assigned to departments and corresponding department
     //language=HSQLDB
     String select05 =
-            "select EMPLOYEE.ID, FIRSTNAME, LASTNAME, MIDDLENAME, POSITION, MANAGER, HIREDATE, SALARY, DEPARTMENT, NAME from EMPLOYEE left join DEPARTMENT D on EMPLOYEE.DEPARTMENT = D.ID where DEPARTMENT is not null";
+            "select EMPLOYEE.ID, FIRSTNAME, LASTNAME, MIDDLENAME, POSITION, MANAGER, HIREDATE, SALARY, DEPARTMENT, NAME " +
+                    "from EMPLOYEE left join DEPARTMENT D on EMPLOYEE.DEPARTMENT = D.ID where DEPARTMENT is not null";
 
     //Select all employees and corresponding department name if there is one.
     //Name column containing name of the department "depname".
     //language=HSQLDB
-    String select06 =
-            "select EMPLOYEE.ID, FIRSTNAME, LASTNAME, MIDDLENAME, POSITION, MANAGER, HIREDATE, SALARY, DEPARTMENT, NAME from EMPLOYEE left join DEPARTMENT depname on EMPLOYEE.DEPARTMENT = depname.ID";
+    String select06 = "select EMPLOYEE.ID, FIRSTNAME, LASTNAME, MIDDLENAME, POSITION, MANAGER, HIREDATE, SALARY, DEPARTMENT, NAME as depname " +
+            "from EMPLOYEE left join DEPARTMENT depname on EMPLOYEE.DEPARTMENT = depname.ID";
 
     //Select total salary pf all employees. Name it "total".
     //language=HSQLDB
@@ -39,7 +40,9 @@ public class SqlQueries {
     //Name column containing name of the department "depname".
     //Name column containing employee amount "staff_size".
     //language=HSQLDB
-    String select08 = "--SELECT COUNT";
+    String select08 =
+            "SELECT COUNT(EMPLOYEE.ID) as staff_size, DEPARTMENT.NAME as depname " + //why is department.name warning here??
+                    "from DEPARTMENT join EMPLOYEE on DEPARTMENT.ID = EMPLOYEE.DEPARTMENT GROUP BY DEPARTMENT.NAME";
 
     //Select all departments and values of total and average salary per department
     //Name column containing name of the department "depname".
@@ -50,16 +53,6 @@ public class SqlQueries {
     //Name column containing employee's lastname "employee".
     //Name column containing manager's lastname "manager".
     //language=HSQLDB
-    String select10 =
-//            "SELECT EMPLOYEE.LASTNAME as employee, EMPLOYEE.LASTNAME as manager from EMPLOYEE employee join EMPLOYEE manager on EMPLOYEE.MANAGER = EMPLOYEE.ID";
-    "SELECT M.LASTNAME as employee";
-/*
-SELECT E.first_name AS "Employee Name",
-   M.first_name AS "Manager"
-     FROM employees E
-       JOIN employees M
-         ON E.manager_id = M.employee_id;
-
-
-*/
+    String select10 = "SELECT e.LASTNAME as employee, m.LASTNAME as manager from EMPLOYEE e left join EMPLOYEE m on e.MANAGER = m.ID";
+    //"Select e.lastname as employee, m.lastname as manager from employee e join employee m on m.manager=e.id";
 }
