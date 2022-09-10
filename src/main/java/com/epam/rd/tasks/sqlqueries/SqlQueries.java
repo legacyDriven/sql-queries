@@ -29,8 +29,7 @@ public class SqlQueries {
     //Name column containing name of the department "depname".
     //language=HSQLDB
     String select06 =
-            "select EMPLOYEE.ID, FIRSTNAME, LASTNAME, MIDDLENAME, POSITION, MANAGER, HIREDATE, SALARY, DEPARTMENT, NAME from EMPLOYEE join DEPARTMENT depname on EMPLOYEE.DEPARTMENT = depname.ID where DEPARTMENT is not null";
-
+            "select EMPLOYEE.ID, FIRSTNAME, LASTNAME, MIDDLENAME, POSITION, MANAGER, HIREDATE, SALARY, DEPARTMENT, NAME from EMPLOYEE left join DEPARTMENT depname on EMPLOYEE.DEPARTMENT = depname.ID";
 
     //Select total salary pf all employees. Name it "total".
     //language=HSQLDB
@@ -51,7 +50,16 @@ public class SqlQueries {
     //Name column containing employee's lastname "employee".
     //Name column containing manager's lastname "manager".
     //language=HSQLDB
-    String select10 = "";
+    String select10 =
+//            "SELECT EMPLOYEE.LASTNAME as employee, EMPLOYEE.LASTNAME as manager from EMPLOYEE employee join EMPLOYEE manager on EMPLOYEE.MANAGER = EMPLOYEE.ID";
+    "SELECT M.LASTNAME as employee";
+/*
+SELECT E.first_name AS "Employee Name",
+   M.first_name AS "Manager"
+     FROM employees E
+       JOIN employees M
+         ON E.manager_id = M.employee_id;
 
 
+*/
 }
